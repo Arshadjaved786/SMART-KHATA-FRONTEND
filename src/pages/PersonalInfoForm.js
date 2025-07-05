@@ -14,7 +14,7 @@ export default function PersonalInfoForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/business-info`, {
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/personal-info`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
