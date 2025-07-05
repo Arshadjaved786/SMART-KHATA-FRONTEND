@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // 🔄 Base URL from .env
-const API_URL = `${process.env.REACT_APP_API_URL}/api/invoices`;
+const API_URL = `${process.env.REACT_APP_API_BASE_URL}/api/invoices`;
 
 // ✅ Create a new invoice (with FormData support)
 export const createInvoice = async (invoiceData, token) => {

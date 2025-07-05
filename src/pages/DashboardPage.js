@@ -24,7 +24,7 @@ const DashboardPage = () => {
     const fetchSummary = async () => {
       try {
         const token = localStorage.getItem('token');
-        const baseUrl = process.env.REACT_APP_API_URL;
+        const baseUrl = process.env.REACT_APP_API_BASE_URL;
         const res = await axios.get(`${baseUrl}/api/dashboard-summary`, {
           headers: { Authorization: `Bearer ${token}` },
         });
