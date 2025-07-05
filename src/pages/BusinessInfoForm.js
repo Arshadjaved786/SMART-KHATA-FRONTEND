@@ -1,27 +1,27 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function BusinessInfoForm() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    businessName: "",
-    businessType: "",
-    currency: "",
-    taxNumber: "",
+    businessName: '',
+    businessType: '',
+    currency: '',
+    taxNumber: '',
   });
 
-  const businessTypes = ["Retail", "Wholesale", "Services", "Manufacturing", "Freelancing"];
-  const currencies = ["PKR", "USD", "INR", "SAR", "AED"];
+  const businessTypes = ['Retail', 'Wholesale', 'Services', 'Manufacturing', 'Freelancing'];
+  const currencies = ['PKR', 'USD', 'INR', 'SAR', 'AED'];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/users/business-info", {
-        method: "POST",
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/business-info`, {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify(form),
       });
@@ -29,11 +29,11 @@ export default function BusinessInfoForm() {
       const data = await res.json();
       alert(data.msg);
 
-      if (data.msg === "Business Info saved successfully") {
-        navigate("/dashboard");
+      if (data.msg === 'Business Info saved successfully') {
+        navigate('/dashboard');
       }
     } catch (error) {
-      alert("Something went wrong while saving business info!");
+      alert('Something went wrong while saving business info!');
     }
   };
 
@@ -55,7 +55,9 @@ export default function BusinessInfoForm() {
         >
           <option value="">Select Business Type</option>
           {businessTypes.map((type) => (
-            <option key={type} value={type}>{type}</option>
+            <option key={type} value={type}>
+              {type}
+            </option>
           ))}
         </select>
 
@@ -66,7 +68,9 @@ export default function BusinessInfoForm() {
         >
           <option value="">Select Currency</option>
           {currencies.map((curr) => (
-            <option key={curr} value={curr}>{curr}</option>
+            <option key={curr} value={curr}>
+              {curr}
+            </option>
           ))}
         </select>
 
@@ -77,7 +81,9 @@ export default function BusinessInfoForm() {
         />
 
         <div>
-          <button type="button" onClick={() => navigate("/personal-info")}>⬅️ Back</button>
+          <button type="button" onClick={() => navigate('/personal-info')}>
+            ⬅️ Back
+          </button>
           <button type="submit">Next ➡️</button>
         </div>
       </form>

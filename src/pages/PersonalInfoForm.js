@@ -1,12 +1,12 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function PersonalInfoForm() {
   const [form, setForm] = useState({
-    fullName: "",
-    cnic: "",
-    mobile: "",
-    address: "",
+    fullName: '',
+    cnic: '',
+    mobile: '',
+    address: '',
   });
 
   const navigate = useNavigate();
@@ -14,11 +14,11 @@ export default function PersonalInfoForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/users/personal-info", {
-        method: "POST",
+      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/users/business-info`, {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
         body: JSON.stringify(form),
       });
@@ -26,11 +26,11 @@ export default function PersonalInfoForm() {
       const data = await res.json();
       alert(data.msg);
 
-      if (data.msg === "Personal Info saved successfully") {
-        navigate("/business-info");
+      if (data.msg === 'Personal Info saved successfully') {
+        navigate('/business-info');
       }
     } catch (error) {
-      alert("Something went wrong!");
+      alert('Something went wrong!');
     }
   };
 
@@ -64,7 +64,9 @@ export default function PersonalInfoForm() {
       />
 
       <div>
-        <button type="button" onClick={() => navigate(-1)}>⬅️ Back</button>
+        <button type="button" onClick={() => navigate(-1)}>
+          ⬅️ Back
+        </button>
         <button type="submit">Next ➡️</button>
       </div>
     </form>

@@ -1,7 +1,7 @@
 // 📁 src/services/customerLedgerService.js
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_URL = `${BASE_URL}/api/journal`;
 
 const getToken = () => localStorage.getItem('token');

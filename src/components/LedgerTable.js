@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FILE_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const FILE_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const LedgerTable = ({ ledgerData = [], openingBalance = 0, onEdit, onDelete, onRowClick }) => {
   const [q, setQ] = useState('');

@@ -42,7 +42,7 @@ export default function SupplierLedgerTable({ ledgerData, openingBalance, onEdit
     let fileUrl = entry.attachmentUrl || entry.fileUrl;
     if (!fileUrl) return '-';
     fileUrl = fileUrl.replace(/^\/?uploads\//, '');
-    const fullUrl = `http://localhost:5000/uploads/${fileUrl}`;
+    const fullUrl = `${process.env.REACT_APP_API_BASE_URL}/uploads/${fileUrl}`;
     const type = entry.attachmentType || detectFileType(fileUrl);
 
     switch (type) {

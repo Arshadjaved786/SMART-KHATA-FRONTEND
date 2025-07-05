@@ -111,12 +111,15 @@ export default function SupplierLedgerPage() {
     try {
       const token = localStorage.getItem('token'); // یا جہاں سے آپ token پڑھتے ہیں
 
-      const res = await fetch(`http://localhost:5000/api/supplier-ledger/entry/${entryId}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_API_BASE_URL}/api/supplier-ledger/entry/${entryId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!res.ok) throw new Error('Failed to delete');
 

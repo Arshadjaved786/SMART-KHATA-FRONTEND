@@ -22,7 +22,7 @@ const MonthlySalesChart = () => {
     const fetchSales = async () => {
       try {
         const token = localStorage.getItem('token');
-        const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+        const baseUrl = process.env.REACT_APP_API_BASE_URL;
         const response = await axios.get(`${baseUrl}/api/journal-entries/dashboard-monthly-sales`, {
           headers: { Authorization: `Bearer ${token}` },
         });
